@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        
+    <h3>Chuyển đổi mệnh giá tiền </h3>
+        <h4>Nhập số tiền và loại tiền cần chuyển đổi</h4>
+    <select name="currency" id="convert1" onchange="first" oninput="first()">
+        <option  value="VND" >Việt Nam Đồng</option>
+        <option value="doller">Đô La Mỹ</option>
+        <option value="YEN">ĐỒng Yên</option>
+    </select>
+    <input type="number" name="" id="input" onclick="first()" oninput="first()">
+
+    <br>
+    <br>
+    <hr>
+    <h4> Số tiền sau khi chuyển đổi là:</h4>
+    <select name="currency" id="convert2" onchange="first" oninput="first()">
+        <option value="VND1" >Việt Nam Đồng</option>
+        <option value="doller1">ĐÔ La Mỹ</option>
+        <option value="YEN1">Đồng Yên</option>
+    </select>
+    <input type="number" name="" id="output" onclick="first()" oninput="first()">
+    </div>
+
+    <script>
+        function  first() {
+            var input5 = document.getElementById("input").value;
+            var output5 = document.getElementById("output");
+            
+            output5.value ;
+            // convet from VND to usd and yen
+            if(document.getElementById("convert1").value== "VND") {
+
+                if(document.getElementById("convert2").value== "VND1"){
+                
+                output5.value = input5 * 1;
+
+                }
+
+                else
+                if(document.getElementById("convert2").value== "doller1"){
+                
+                output5.value = input5 * 0.0000436461;
+                }
+
+                else
+                if(document.getElementById("convert2").value== "AED1"){
+                
+                output5.value = input5 * 0.004783;
+                }
+            
+            }
+            // convet from dollar to vnd and yen
+            if(document.getElementById("convert1").value== "doller") {
+                    //dô la sang VND
+                    if(document.getElementById("convert2").value== "VND1"){
+
+                    output5.value = input5 * 23000;
+
+                    }
+                    //đô la giữ nguyên
+                    else
+                    if(document.getElementById("convert2").value== "doller1"){
+
+                    output5.value = input5 * 1;
+                    }
+                    // đô la sang yên Nhật
+                    else
+                    if(document.getElementById("convert2").value== "AED1"){
+
+                    output5.value = input5 * 109.62;
+                    }
+
+                    }
+        // covert from yen Nhat 
+        if(document.getElementById("convert1").value== "YEN") {
+                    //Yên Nhật sang VND
+                    if(document.getElementById("convert2").value== "VND1"){
+
+                    output5.value = input5 * 209.05;
+
+                    }
+                    //Yên Nhật sang Đô La
+                    else
+                    if(document.getElementById("convert2").value== "doller1"){
+
+                    output5.value = input5 * 0.009121;
+                    }
+                    // Yên Nhật sang yên Nhật
+                    else
+                    if(document.getElementById("convert2").value== "YEN1"){
+
+                    output5.value = input5 * 1;
+                    }
+                }
+            
+        }
+    </script>
+</body>
+
+</html>

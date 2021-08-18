@@ -12,7 +12,7 @@
         <option value="circle" selected>Hình tròn</option>
         <option value="triangle">Hình Tam Giác</option>
         <option value="square">Hình Vuông</option>
-        <option value="rectangle">HÌnh Thang</option>
+        <option value="rectangle">Hình Thang</option>
     </select>
 
     <br><br>
@@ -90,7 +90,7 @@
     function calculateArea() {
         // chọn hình
         let shape = document.getElementById("id_shapes").value;        
-        // calculate the shape's area
+        // tinh toan dien tich va chu vi
         let area = 0;
         let perimeter =0;
         switch (shape) {
@@ -120,7 +120,7 @@
                 area = ((parseInt(length) + parseInt(width)) * tall) / 2
                 break;
         }
-        // output the area
+        // xuat ra ket qua dien tich va chu vi
         document.getElementById("id_output").innerHTML = "Area = " + area;
         document.getElementById("id_output2").innerHTML = "Chu vi = " + perimeter;
     }
