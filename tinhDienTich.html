@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tính diện tích</title>
+</head>
+<body>
+<form action="javascript:calculateArea()" onchange="javascript:updateForm()">
+    
+    <label for="id_shapes">Chọn 1 loại hình</label>
+    <select id="id_shapes">
+        <option value="circle" selected>Hình tròn</option>
+        <option value="triangle">Hình Tam Giác</option>
+        <option value="square">Hình Vuông</option>
+        <option value="rectangle">HÌnh Thang</option>
+    </select>
+
+    <br><br>
+
+    <div id="id_inputs_circle">
+        <label for="id_radius">Bán Kính</label>
+        <input id="id_radius" type="number" min="0" step="any">
+        <h2><em>A = &Pi;r<sup>2</sup></em></h2>
+    </div>
+
+    <div id="id_inputs_triangle" hidden>
+        <label for="id_base">cạnh đáy</label>
+        <input id="id_base" type="number" min="0" step="any">
+        <label for="id_height">chiều cao</label>
+        <input id="id_height" type="number" min="0" step="any">
+        <label for="id_canh1">cạnh 1</label>
+        <input id="id_canh1" type="number" min="0" step="any">
+        <label for="id_canh2">cạnh 2</label>
+        <input id="id_canh2" type="number" min="0" step="any">
+        <label for="id_canh3">cạnh 3</label>
+        <input id="id_canh3" type="number" min="0" step="any">
+        <h2>Công thức tính S= cạnh đáy nhân chiều cao chia đôi</h2>
+        <h2>Công thức tính Chu vi bằng 3 cạnh cọng lại</h2>
+    </div>
+
+    <div id="id_inputs_square" hidden>
+        <label for="id_side">canh bên</label>
+        <input id="id_side" type="number" min="0" step="any">
+        <h2><em>A = s<sup>2</sup></em></h2>
+    </div>
+
+    <div id="id_inputs_rectangle" hidden>
+        <label for="id_length">đáy lớn</label>
+        <input id="id_length" type="number" min="0" step="any">
+        <label for="id_width">đáy bé</label>
+        <input id="id_width" type="number" min="0" step="any">
+        <label for="id_tall">chiều cao</label>
+        <input id="id_tall" type="number" min="0" step="any">
+        <h2><em>A =Muon tinh dien tich hinh thang ,day be day lon ta mang cong vao,nhan chieu cao chia 2</em></h2>
+    </div>
+
+    <input type="submit" value="Calculate Area+perimeter">
+    <p id="id_output"></p>
+    <p id="id_output2"></p>
+    <hr>
+</form>
+
+
+<script>
+    function updateForm() {
+        // ẩn đi các input cua hinh
+        document.getElementById("id_inputs_circle").hidden = true;
+        document.getElementById("id_inputs_triangle").hidden = true;
+        document.getElementById("id_inputs_square").hidden = true;
+        document.getElementById("id_inputs_rectangle").hidden = true;
+
+        // sử dụng switch case để chọn hình
+        let shape = document.getElementById("id_shapes").value;
+        switch (shape) {
+            case "circle":
+                document.getElementById("id_inputs_circle").hidden = false;
+                break;
+            case "triangle":
+                document.getElementById("id_inputs_triangle").hidden = false;
+                break;
+            case "square":
+                document.getElementById("id_inputs_square").hidden = false;
+                break;
+            case "rectangle":
+                document.getElementById("id_inputs_rectangle").hidden = false;
+                break;
+        }
+    }
+
+    function calculateArea() {
+        // chọn hình
+        let shape = document.getElementById("id_shapes").value;        
+        // calculate the shape's area
+        let area = 0;
+        let perimeter =0;
+        switch (shape) {
+            case "circle":
+                let radius = document.getElementById("id_radius").value;
+                area = Math.PI * radius * radius;
+                perimeter = 2* Math.PI * radius;
+                break;
+            case "triangle":
+                let base = document.getElementById("id_base").value;
+                let height = document.getElementById("id_height").value;
+                let canh1 =document.getElementById("id_canh1").value;
+                let canh2 =document.getElementById("id_canh2").value;
+                let canh3 =document.getElementById("id_canh3").value;
+                area = base * height / 2;
+                perimeter = parseInt(canh1) + parseInt(canh2) + parseInt(canh3);
+                break;
+            case "square":
+                let side = document.getElementById("id_side").value;
+                area = side * side;
+                perimeter =4 * side;
+                break;
+            case "rectangle":
+                let length = document.getElementById("id_length").value;
+                let width = document.getElementById("id_width").value;
+                let tall = document.getElementById("id_tall").value
+                area = ((parseInt(length) + parseInt(width)) * tall) / 2
+                break;
+        }
+        // output the area
+        document.getElementById("id_output").innerHTML = "Area = " + area;
+        document.getElementById("id_output2").innerHTML = "Chu vi = " + perimeter;
+    }
+</script>
+</body>
+</html>
